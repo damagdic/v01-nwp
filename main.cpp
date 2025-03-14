@@ -1,28 +1,27 @@
 #include <windows.h>
 
+enum { id_button1 = 1, id_button2 = 2};
 
 void on_create(HWND hw)
 {
 	::CreateWindow("BUTTON", "One",
 		WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
 		50, 50, 100, 30, 
-		hw, (HMENU)1, 0, 0);
+		hw, (HMENU)id_button1, 0, 0);
 
 	::CreateWindow("BUTTON", "Two",
 		WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
 		50, 100, 100, 30, 
-		hw, (HMENU)2, 0, 0);
+		hw, (HMENU)id_button2, 0, 0);
 }
 
 
-void on_command(HWND hw, int id)
-{
-	switch (id)
-	{
-	case 1:
+void on_command(HWND hw, int id) {
+	switch (id) {
+	case id_button1:  // Umjesto case 1
 		::MessageBox(hw, "Button 1 Clicked!", "Info", MB_OK | MB_ICONWARNING);
 		break;
-	case 2:
+	case id_button2:  // Umjesto case 2
 		::MessageBox(hw, "Button 2 Clicked!", "Info", MB_OK | MB_ICONWARNING);
 		break;
 	}
